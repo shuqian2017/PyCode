@@ -66,3 +66,7 @@ w1 = Woman("lucy", 24)
 w1.make_friends(m1)
 m1.name = "大帅逼"  # 假设初始化后fke改名字了，但其实还是她这个人
 print("\033[31;1mfke已经更名为%s\033[0m" % w1.friends[0].name)
+
+'''
+Python2类的继承深度优先， Python3广度优先
+'''
