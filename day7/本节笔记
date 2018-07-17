@@ -1,8 +1,9 @@
-¾²Ì¬·½·¨(@staticmethod)
-    Ö»ÊÇÃûÒåÉÏ¹éÀà¹ÜÀí, Êµ¼ÊÉÏÔÚ¾²Ì¬·½·¨Àï·ÃÎÊ²»ÁËÀà»òÊµÀýÖÐµÄÈÎºÎÊôÐÔ
+é™æ€æ–¹æ³•(@staticmethod)
+    åªæ˜¯åä¹‰ä¸Šå½’ç±»ç®¡ç†, å®žé™…ä¸Šåœ¨é™æ€æ–¹æ³•é‡Œè®¿é—®ä¸äº†ç±»æˆ–å®žä¾‹ä¸­çš„ä»»ä½•å±žæ€§
 
-Àà·½·¨
-    Ö»ÄÜ·ÃÎÊÀà±äÁ¿£¬ ²»ÄÜ·ÃÎÊÊµÀý±äÁ¿
+ç±»æ–¹æ³•(@classmethod)
+    åªèƒ½è®¿é—®ç±»å˜é‡ï¼Œ ä¸èƒ½è®¿é—®å®žä¾‹å˜é‡
 
-ÊôÐÔ·½·¨(@property)    (@eat.setater)   (@eat.deleter)
-    °ÑÒ»¸ö·½·¨±ä³ÉÒ»¸ö¾²Ì¬ÊôÐÔ£¬Òþ²ØÊµÏÖÏ¸½Ú£¨È»ºó¿ÉÒÔÀ´ÉèÖÃ¸ÃÊôÐÔµÄÖµ£¬É¾³ý¸ÃÊôÐÔµÈ²Ù×÷£©
+å±žæ€§æ–¹æ³•(@property)    (@eat.setater)   (@eat.deleter)
+    æŠŠä¸€ä¸ªæ–¹æ³•å˜æˆä¸€ä¸ªé™æ€å±žæ€§ï¼Œéšè—å®žçŽ°ç»†èŠ‚ï¼ˆç„¶åŽå¯ä»¥æ¥è®¾ç½®è¯¥å±žæ€§çš„å€¼ï¼Œåˆ é™¤è¯¥å±žæ€§ç­‰æ“ä½œï¼‰
+

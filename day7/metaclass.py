@@ -22,9 +22,6 @@ print('here...')
 class Foo(object, metaclass=MyType):
 
     def __init__(self, name):
-
-
-        git
         self.name = name
         print("Foo __init__")
 
