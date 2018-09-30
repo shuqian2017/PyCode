@@ -1,4 +1,5 @@
 __author__ = 'fke'
+# 类的生成，调用顺序依次是__new__ --> __init__ --> __call__
 
 class MyType(type):
 
