@@ -51,30 +51,25 @@ def delattr(x, y):
     pass
 '''
 
-class Foo(object):
+def bulk(self):
+    print("%s is yelling..."% self.name)
 
-    def __init__(self):
-        self.name = 'fke'
+class Dog(object):
 
-    def func(self):
-        return 'func'
+    def __init__(self, name):
+        self.name = name
 
-obj = Foo()
+    def eat(self, food):
+        print("%s is eating..." % self.name,food)
 
-# ***检查是否含有成员***
-print(hasattr(obj, 'name'))
-print(hasattr(obj, 'func'))
+d = Dog("旺财")
+choice = input(">>>").strip()
 
-# ***获取成员***
-print(getattr(obj, 'name'))
-print(getattr(obj, 'func'))
-
-# ***设置成员***
-setattr(obj, 'age', 10)
-print(getattr(obj, 'age'))
-setattr(obj, 'show', lambda num: num + 1)
-print(getattr(obj, 'show'))
-
-# ***删除成员***
-# delattr(obj, 'name')
-# delattr(obj, 'func')
+if hasattr(d, choice):
+    print(getattr(d,choice))
+else:
+    # setattr(d,choice,bulk) # 动态的加载一个类以外的方法
+    # d.talk(d)
+    setattr(d,choice,bulk) # d.talk = bulk
+    func = getattr(d, choice)
+    func(d)

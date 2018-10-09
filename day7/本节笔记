@@ -10,4 +10,7 @@
 
 
 反射:
-    hasattr(obj, name_str), 判断一个对象obj里面是否
+    hasattr(obj, name_str), 判断一个对象obj里面是否有对应的name_str字符串的类方法
+    getattr(obj, name_str), 获取一个对象obj里面的name_str属性
+    setattr(obj, y, z),
+    delattr(x, y)
