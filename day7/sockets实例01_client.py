@@ -30,7 +30,7 @@ sk.settimeout(5)
 while True:
     data = sk.recv(1024).decode()
     print('receive:', data)
-    inp = input('please input:')
+    inp = input('please input:').strip()
     sk.sendall(inp.encode())
     if inp == 'exit':
         break
