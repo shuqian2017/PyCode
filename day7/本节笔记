@@ -7,3 +7,10 @@
 属性方法(@property)    (@eat.setater)   (@eat.deleter)
     把一个方法变成一个静态属性，隐藏实现细节（然后可以来设置该属性的值，删除该属性等操作）
 
+
+
+反射:
+    hasattr(obj, name_str), 判断一个对象obj里面是否有对应的name_str字符串的类方法
+    getattr(obj, name_str), 获取一个对象obj里面的name_str属性
+    setattr(obj, y, z),
+    delattr(x, y)

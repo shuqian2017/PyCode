@@ -1,4 +1,5 @@
 __author__ = 'fke'
+# 类的生成，调用顺序依次是__new__ --> __init__ --> __call__
 
 class MyType(type):
 
@@ -12,6 +13,7 @@ class MyType(type):
         print(self)
         self.__init__(obj, *args, **kwargs)
         return obj
+        # __call__ 调用 __new__ 调用 __init__
 
     def __new__(cls, *args, **kwargs):
         print("Mytype __new__", *args, **kwargs)
@@ -27,7 +29,7 @@ class Foo(object, metaclass=MyType):
 
     def __new__(cls, *args, **kwargs):
         print("Foo __new__", cls, *args, **kwargs)
-        return object.__new__(cls)
+        return object.__new__(cls)    # 继承父类的__new__方法,然后去调用构造函数
 
 f = Foo("fke")
 print("f", f)
