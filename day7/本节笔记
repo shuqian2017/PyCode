@@ -14,3 +14,57 @@
     getattr(obj, name_str), 获取一个对象obj里面的name_str属性
     setattr(obj, y, z),
     delattr(x, y)
+
+
+__metaclass__ 用来定义这个类以怎样的形式被创建
+
+
+try:
+    ...
+except (ValueError, KeyError),e  # in 2.7
+except (ValueError, KeyError) as e  # in 3.x
+except Exception as e:   # 放在异常处理的最后面
+else: #  没有发生异常，就执行
+finally:  无论如何都执行
+
+raise ValueError
+
+
+
+断言
+assert type(obj.name) is int
+
+
+
+socket
+    tcp/ip  send, recv
+    udp
+
+    family address
+        AF.INET     ipv4
+        AF.INET6
+        AF.UNIX     local
+    socket protocol type
+        socket.SOCK_STREAM  tcp/ip
+        socket.SOCK_DGRAM   数据格式socket, for UDP
+
+    服务端
+    server = socket.socket(AF.INET, socket.SOCK_STREAM)
+    server.bind(localhost, 9999)
+    server.listen()
+
+    while True:
+        conn, addr = server.accept()  # 阻塞， conn 每进来一个连接都新开一个实例
+        while True:
+            print("new conn", addr)
+            data = conn.recv(1024)     # recv 默认是阻塞的
+            if not data:
+                break                  # 客户端已断开, conn.recv收到的数据都是空数据
+            conn.send(data.upper())    # upper将小写变成大写
+
+
+    客户端
+    client = socket.socket()
+    client.connect(serverip, 9999)
+    client.send(data)
+    client.recv(data)

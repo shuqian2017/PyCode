@@ -2,8 +2,8 @@
 """
 @project: code
 @author: fke
-@file: 异常处理.py
-@time: 2018-10-10 01:14:
+@file: 动态导入模块.py
+@time: 2019-05-28 23:31:44
 # code is far away from bugs with the god animal protecting
     I love animals. They taste delicious.
               ┏┓      ┏┓
@@ -19,15 +19,24 @@
                   ┃┫┫  ┃┫┫
                   ┗┻┛  ┗┻┛
 """
-data = {}
+'''
+(和本目录lib配合使用)
+# 方式一: python解释器内部使用的
+mod = __import__('lib.aa')  # 相当于mod = lib
+obj = mod.aa.C()
+print(obj.name)
+'''
 
-try:
-    # data['name']
-    open("test.txt")
-except (KeyError, IndexError) as e:
-    print("没有这样的Key:", e)
-except IndexError as e:
-    print("列表操作错误:", e)
-except Exception as e:
-    print("未知的错误", e)
-    raise ValueError
+
+# 方式二:  官方建议使用的动态导入模块的方式
+import importlib
+aa = importlib.import_module('lib.aa')   # 官方建议使用这个
+obj = aa.C()
+print(obj.name)
+
+
+assert type(obj.name) is str
+print('assert 断言成功')
+
+
+
