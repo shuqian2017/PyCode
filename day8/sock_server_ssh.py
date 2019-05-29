@@ -43,6 +43,8 @@ while True:
             shell_res = ' shell command is null...'
 
         conn.send(str(len(shell_res.encode())).encode())
+        client_ack = conn.recv(1024).decode()     # 中间加一个recv阻塞，解决粘包的问题，保证2个发送是分开的
+        print('[ 客户端发送来的消息 ]：', client_ack)
         conn.send(shell_res.encode('utf-8'))
         print('[ send done ]')
 
