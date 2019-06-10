@@ -1,10 +1,10 @@
-静态方法(@staticmethod)
+静态方法(@staticmethod):
     只是名义上归类管理, 实际上在静态方法里访问不了类或实例中的任何属性
 
-类方法(@classmethod)
+类方法(@classmethod):
     只能访问类变量， 不能访问实例变量
 
-属性方法(@property)    (@eat.setater)   (@eat.deleter)
+属性方法(@property)    (@eat.setater)   (@eat.deleter):
     把一个方法变成一个静态属性，隐藏实现细节（然后可以来设置该属性的值，删除该属性等操作）
 
 

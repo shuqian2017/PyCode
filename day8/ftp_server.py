@@ -2,7 +2,7 @@
 """
 @project: code
 @author: fke
-@file: ftp_server.py
+@file: ftp_main.py
 @time: 2019-05-31 01:55:56
 # code is far away from bugs with the god animal protecting
     I love animals. They taste delicious.

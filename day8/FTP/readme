@@ -1,0 +1,4 @@
+程序启动：
+    1.服务端：python3 Server/bin/ftp_main.py start
+
+    2.客户端：python3 Client/ftp_client.py -s localhost -P 9500 -u admin -p 123
