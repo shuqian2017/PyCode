@@ -33,7 +33,6 @@ class ArvgHandler(object):
     def __init__(self):
         self.parser = optparse.OptionParser()
         (options, args) = self.parser.parse_args()
-
         self.verify_args(options, args)
 
 
