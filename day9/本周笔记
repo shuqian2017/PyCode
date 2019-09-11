@@ -1,2 +1,7 @@
 ssh:
     安装paramiko库
+
+
+ssh-keygen : 生成公钥私钥
+ssh-copy-id user@host   将生成的公钥，拷贝到要连接的主机，实现免密码登录
+

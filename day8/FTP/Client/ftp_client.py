@@ -47,8 +47,8 @@ class FTPClient(object):
         parser.add_option("-P", type="int", dest="port", help="ftp server port")
         parser.add_option("-u", dest="username", help="username")
         parser.add_option("-p", dest="password", help="password")
-        # fakeArgs = ['-s', 'localhost', '-P','9500', '-u','admin', '-p','123']
-        (self.options, self.args) = parser.parse_args()
+        fakeArgs = ['-s', 'localhost', '-P','9999', '-u','admin', '-p','123']
+        (self.options, self.args) = parser.parse_args(fakeArgs)
         self.verify_args(self.options, self.args)
         self.make_connection()
 
@@ -77,7 +77,6 @@ class FTPClient(object):
     def authenticate(self):
         '''用户验证'''
         if self.options.username:
-            print(self.options.username, self.options.password)
             return self.get_auth_result(self.options.username, self.options.password)
         else:
             retry_count = 0
@@ -95,6 +94,7 @@ class FTPClient(object):
                 'password': password
                 }
         self.sock.send(json.dumps(data).encode())
+        print("send data done...")
         response = self.get_response()
 
         if response.get('status_code') == 254:
