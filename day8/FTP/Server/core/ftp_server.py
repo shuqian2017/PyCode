@@ -46,8 +46,6 @@ STATUS_CODE = {
     260: "path changed",
 }
 
-platform = settings.base_platform  # win32
-
 import json
 
 class FTPHandler(socketserver.BaseRequestHandler):
@@ -118,12 +116,8 @@ class FTPHandler(socketserver.BaseRequestHandler):
 
     def _listdir(self, *args, **kwargs):
         """return file list on current dir"""
-        if platform == "linux2":
-            res = self.run_cmd("ls -lsh %s" % self.current_dir)
-            self.send_response(200, data=res)
-        else:
-            self.send_response(251)
-
+        res = self.run_cmd("ls -lsh %s" % self.current_dir)
+        self.send_response(200, data=res)
 
     def run_cmd(self, cmd):
         cmd_res = subprocess.getstatusoutput(cmd)

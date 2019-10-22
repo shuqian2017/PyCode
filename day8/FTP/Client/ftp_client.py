@@ -21,12 +21,10 @@
 """
 
 import socket
-import os
 import json
 import optparse
-import getpass
 import hashlib
-import sys
+
 
 STATUS_CODE = {
     250 : "Invalid cmd format, e.g : {'action':'get', 'filename':'test.py', 'size':344}",
