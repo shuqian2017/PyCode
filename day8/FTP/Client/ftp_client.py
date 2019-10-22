@@ -47,8 +47,8 @@ class FTPClient(object):
         parser.add_option("-P", type="int", dest="port", help="ftp server port")
         parser.add_option("-u", dest="username", help="username")
         parser.add_option("-p", dest="password", help="password")
-        fakeArgs = ['-s', 'localhost', '-P','9999', '-u','admin', '-p','123']
-        (self.options, self.args) = parser.parse_args(fakeArgs)
+        # fakeArgs = ['-s', 'localhost', '-P','9999', '-u','admin', '-p','123']  # 如果需要启用，则把fakeArgs添加到下面括号中
+        (self.options, self.args) = parser.parse_args()
         self.verify_args(self.options, self.args)
         self.make_connection()
 
@@ -86,6 +86,7 @@ class FTPClient(object):
                 if self.get_auth_result(username, password):
                     return True
                 retry_count += 1
+            return False
 
 
     def get_auth_result(self, user, password):
@@ -117,7 +118,7 @@ class FTPClient(object):
 
     def interactive(self):
         if self.authenticate():
-            print("---start interactive with u...")
+            print("--- start interactive with u...")
             self.terminal_display = "[%s]$:" % self.user
             while True:
                 choice = input(self.terminal_display).strip()
@@ -129,7 +130,8 @@ class FTPClient(object):
                     func(cmd_list)
                 else:
                     print("Invalid cmd, type 'help' to check available commands")
-
+        else:
+            print('auth fail')
 
     def __md5_required(self, cmd_list):
         '''检测命令是否需要进行MD5验证'''
@@ -137,7 +139,7 @@ class FTPClient(object):
             return True
 
 
-    def help(self, *args, **kwargs):
+    def _help(self, *args, **kwargs):
         supported_actions = """
         get filename    # get file from FTP server
         put filename    # upload files to FTP server

@@ -21,7 +21,9 @@
 """
 
 import os
+import sys
 base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+base_platform = sys.platform
 
 USER_HOME = "%s/home" % base_dir
 LOG_DIR = "%s/log" % base_dir

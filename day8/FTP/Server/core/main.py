@@ -22,6 +22,7 @@
 
 
 import optparse
+
 from core.ftp_server import FTPHandler
 import socketserver
 from conf import settings
@@ -48,7 +49,7 @@ class ArvgHandler(object):
             exit("usage: start/stop")
 
     def start(self):
-        print('---\033[32;1mStarting FTP server on %s:%s\033[0m---' % (settings.HOST, settings.PORT))
+        print(f'--- Starting FTP server on {settings.HOST}:{settings.PORT} ---')
         server = socketserver.ThreadingTCPServer((settings.HOST, settings.PORT), FTPHandler)
         server.serve_forever()
 
