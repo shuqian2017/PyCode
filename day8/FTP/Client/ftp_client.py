@@ -24,6 +24,7 @@ import socket
 import json
 import optparse
 import hashlib
+import sys
 
 
 STATUS_CODE = {
@@ -216,7 +217,7 @@ class FTPClient(object):
             return
         data_header = {
             'action':'get',
-            'filename':'cmd_list[1]'
+            'filename':cmd_list[1]
         }
         if self.__md5_required(cmd_list):
             data_header['md5'] = True
@@ -266,7 +267,7 @@ class FTPClient(object):
                     try:
                         progress.send(len(data))
                     except StopIteration as e:
-                        print("100%")
+                        print(" 100% ")
 
                 else:
                     print("------>file recv done------")
