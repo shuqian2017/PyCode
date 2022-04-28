@@ -2,7 +2,7 @@
 """
 @project: code
 @author: fke
-@file: main.py
+@file: main_demo.py
 @time: 2019-06-05 23:35:56
 # code is far away from bugs with the god animal protecting
     I love animals. They taste delicious.
@@ -22,6 +22,7 @@
 
 
 import optparse
+
 from core.ftp_server import FTPHandler
 import socketserver
 from conf import settings
@@ -48,7 +49,7 @@ class ArvgHandler(object):
             exit("usage: start/stop")
 
     def start(self):
-        print('---\033[32;1mStarting FTP server on %s:%s\033[0m---' % (settings.HOST, settings.PORT))
+        print(f'--- Starting FTP server on {settings.HOST}:{settings.PORT} ---')
         server = socketserver.ThreadingTCPServer((settings.HOST, settings.PORT), FTPHandler)
         server.serve_forever()
 

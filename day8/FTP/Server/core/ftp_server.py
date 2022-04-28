@@ -22,12 +22,12 @@
 
 import socketserver
 import configparser
-from conf import settings
 import os
+
+from conf import settings
 import subprocess
 import hashlib
 import re
-
 
 STATUS_CODE = {
     200: "Task finished",
@@ -51,12 +51,12 @@ class FTPHandler(socketserver.BaseRequestHandler):
     def handle(self):
         while True:
             self.data = self.request.recv(1024).strip()
-            print(self.client_address[0])
-            print(self.data)
+            print('adderr:', self.client_address[0] + '\n'  'recv data:', self.data)
             if not self.data:
                 print("client closed...")
                 break
             data = json.loads(self.data.decode())
+            print("data:", data)
             if data.get('action') is not None:
                 if hasattr(self, "_%s" % data.get('action')):
                     func = getattr(self, "_%s" % data.get('action'))
@@ -91,8 +91,7 @@ class FTPHandler(socketserver.BaseRequestHandler):
             self.user = user
             self.user['username'] = data.get("username")
 
-
-            self.home_dir = "%s/home/%s" % (settings.BASE_DIR, data.get("username"))
+            self.home_dir = "%s/home/%s" % (settings.base_dir, data.get("username"))
             self.current_dir = self.home_dir
             self.send_response(254)
 
@@ -105,7 +104,7 @@ class FTPHandler(socketserver.BaseRequestHandler):
             _password = config[username]["Password"]
             if _password == password:
                 print("pass auth..", username)
-                config[username]['Username'] = username
+                config[username]["Username"] = username
                 return config[username]
 
     def _put(self, *args, **kwargs):
@@ -145,8 +144,8 @@ class FTPHandler(socketserver.BaseRequestHandler):
 
     def get_relative_path(self, abs_path):
         """return relative path of this user"""
-        relative_path = re.sub("^%s" % settings.BASE_DIR, '', abs_path)
-        print(('relative path', relative_path, abs_path))
+        relative_path = re.sub("^%s" % settings.base_dir.replace('\\', '/'), '', abs_path.replace('\\', '/'))
+        print('relative path', relative_path, abs_path)
         return relative_path
 
 

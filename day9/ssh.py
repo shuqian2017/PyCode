@@ -68,4 +68,3 @@ while True:
     print('[ 返回结果 ]', result.decode('utf-8'))
 
 transport.close()
-
