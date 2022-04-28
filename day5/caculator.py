@@ -117,21 +117,21 @@ def parse_operator(formula):
                     nagative_mark = False
                 else:
                     prior_1 = i[0]
-                for l in i[1:]:
-                    if l.isdigit():
-                        if prior_1.isdigit() or len(prior_1) > 1:
-                            prior_1 += 1
-                        else:
-                            prior_1 = 1
+            for l in i[1:]:
+                if l.isdigit():
+                    if prior_1.isdigit() or len(prior_1) > 1:
+                        prior_1 += 1
                     else:
-                        string_to_list.append(prior_1)
-                        string_to_list.append(l)
                         prior_1 = 1
                 else:
                     string_to_list.append(prior_1)
+                    string_to_list.append(l)
+                    prior_1 = 1
+            else:
+                string_to_list.append(prior_1)
 
                 print('------>::', string_to_list)
-                calc_res = caculate_1(string_to_list)   # 乘除运算结果
+                calc_res = caculate_1(string_to_list)  # 乘除运算结果
                 data_after_remove_low_priorities[index] = calc_res
                 '''operators = re.findall('[*,/]', i)
                 data = re.split('[*,/]', i)
